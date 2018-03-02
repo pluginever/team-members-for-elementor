@@ -4,5 +4,5 @@ build
 *.log
 node_module
 .idea
-
+node_modules
 
