@@ -13,11 +13,11 @@ class Team_Members extends Widget_Base {
     }
 
     public function get_title() {
-        return 'Team Members';
+        return __('Team Members', 'ever_team_members');
     }
 
     public function get_icon() {
-        return 'eicon-posts-grid';
+        return 'fa fa-group';
     }
 
     public function get_categories() {
@@ -28,14 +28,14 @@ class Team_Members extends Widget_Base {
         $this->start_controls_section(
             'section_title',
             [
-                'label' => __( 'Banner', 'ultimate-elementor' ),
+                'label' => __( 'Banner', 'ever_team_members' ),
             ]
         );
 
         $this->add_control(
             'member_photo',
             [
-                'label' => __( 'Photo', 'your-plugin' ),
+                'label' => __( 'Photo', 'ever_team_members' ),
                 'type' => Controls_Manager::MEDIA,
                 'default' => [
                     'url' => Utils::get_placeholder_image_src(),
@@ -46,20 +46,20 @@ class Team_Members extends Widget_Base {
         $this->add_control(
             'member_name',
             [
-                'label'       => __( 'Name', 'your-plugin' ),
+                'label'       => __( 'Name', 'ever_team_members' ),
                 'type'        => Controls_Manager::TEXT,
-                'default'     => __( 'Member Name', 'your-plugin' ),
-                'placeholder' => __( 'Type name of the team member', 'your-plugin' ),
+                'default'     => __( 'Member Name', 'ever_team_members' ),
+                'placeholder' => __( 'Type name of the team member', 'ever_team_members' ),
             ]
         );
 
         $this->add_control(
             'member_title',
             [
-                'label'       => __( 'Title', 'your-plugin' ),
+                'label'       => __( 'Title', 'ever_team_members' ),
                 'type'        => Controls_Manager::TEXT,
-                'default'     => __( 'Member Title', 'your-plugin' ),
-                'placeholder' => __( 'Type title of the team member', 'your-plugin' ),
+                'default'     => __( 'Member Title', 'ever_team_members' ),
+                'placeholder' => __( 'Type title of the team member', 'ever_team_members' ),
             ]
         );
 
@@ -117,7 +117,9 @@ class Team_Members extends Widget_Base {
                 <div class="ee-team-members-socials">
                     <?php if( !empty($socials)){
                         foreach ($socials as $social){
-                            echo "<a href='{$social['member_social_link']['url']}' target='_blank'><i class='{$social['social_icon']}' aria-hidden='true'></i></a>";
+                            if( !empty($social['member_social_link']['url']) && !empty($social['social_icon'])){
+                                echo "<a href='{$social['member_social_link']['url']}' target='_blank'><i class='{$social['social_icon']}' aria-hidden='true'></i></a>";
+                            }
                         }
 
                     } ?>
@@ -135,10 +137,6 @@ class Team_Members extends Widget_Base {
 
     protected function _content_template() {
         ?>
-        <#
-        console.log(settings);
-        console.log(settings);
-        #>
         <div class="ever-elements ee-team-members">
             <div class="ee-team-members-container">
                 <div class="ee-team-members-overlay"></div>
@@ -146,7 +144,9 @@ class Team_Members extends Widget_Base {
                 <# if ( settings.member_socials ) { #>
 
                     <# _.each( settings.list, function( item ) { #>
+                            <# if( item.member_social_link.url ) { #>
                             <a href='{{item.member_social_link.url}}' target='_blank'><i class='{{item.member_social_link.social_icon}}' aria-hidden='true'></i></a>
+                            <# } #>
                     <# }); #>
 
                 <# } #>

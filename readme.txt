@@ -1,17 +1,23 @@
 === Team Members for Elementor ===
-Contributors:      PluginEver  
-Donate link:         
-Tags:  
-Requires at least: 3.6.0  
-Tested up to:      4.8.0  
-Stable tag:        1.0.0  
-License:           GPLv2 or later  
-License URI:       http://www.gnu.org/licenses/gpl-2.0.html  
+Contributors: manikmist09
+Donate link:
+Tags: elementor, team member, team members, elementor page builder
+Requires at least: 4.5
+Tested up to: 4.9
+Requires PHP: 5.4
+Stable tag: 1.9.7
+License: GPLv3
+License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
-The best WordPress plugin ever made!
 
 == Description ==
+Team members is an addon for Elementor page builder. Using the extension you can show team members of your organization or an agency in a multi-column grid.
 
+== Features ==
+* Support member photo
+* Support member name
+* Support member title
+* Support any social link
 
 
 == Installation ==

@@ -4,9 +4,8 @@
  * Plugin URI:  http://pluginever.com
  * Description: The best WordPress plugin ever made!
  * Version:     1.0.0
- * Author:      PluginEver
- * Author URI:  http://pluginever.com
- * Donate link: http://pluginever.com
+ * Author:      manikmist09
+ * Author URI:  http://manik.me
  * License:     GPLv2+
  * Text Domain: ever_team_members
  * Domain Path: /languages
