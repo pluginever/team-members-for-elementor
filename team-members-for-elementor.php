@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Team Members for Elementor
  * Plugin URI:  http://pluginever.com
- * Description: The best WordPress plugin ever made!
+ * Description: Elementor extension fow showing team members profile
  * Version:     1.0.0
  * Author:      manikmist09
  * Author URI:  http://manik.me
