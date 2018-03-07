@@ -1,4 +1,4 @@
-=== Team Members for Elementor ===
+=== Team Members for Elementor Page Builder ===
 Contributors: manikmist09
 Donate link:
 Tags: elementor, team member, team members, elementor page builder
@@ -18,7 +18,11 @@ Team members is an addon for Elementor page builder. Using the extension you can
 * Support member name
 * Support member title
 * Support any social link
+* Drag & Drop
+* List weight
 
+= Contribute =
+This may have bugs and lack of many features. If you want to contribute to this project, you are more than welcome. Please open an issue [here](https://github.com/pluginever/team-members-for-elementor/issues)
 
 == Installation ==
 
@@ -31,7 +35,9 @@ Team members is an addon for Elementor page builder. Using the extension you can
 
 
 == Screenshots ==
-
+1. Team Members
+2. Team Member Profile on hover
+3. Team member builder
 
 == Changelog ==
 

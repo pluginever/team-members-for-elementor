@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Team Members for Elementor 1.0.0\n"
 "Report-Msgid-Bugs-To: http://pluginever.com/support/\n"
-"POT-Creation-Date: 2018-03-04 16:29:25+00:00\n"
+"POT-Creation-Date: 2018-03-07 13:36:32+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -120,7 +120,7 @@ msgid "http://pluginever.com"
 msgstr ""
 
 #. Description of the plugin/theme
-msgid "The best WordPress plugin ever made!"
+msgid "Elementor extension fow showing team members profile"
 msgstr ""
 
 #. Author of the plugin/theme
