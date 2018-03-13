@@ -20,9 +20,9 @@ class Team_Members extends Widget_Base {
         return 'fa fa-group';
     }
 
-    public function get_categories() {
-        return [ 'ever-elements' ];    // category of the widget
-    }
+//    public function get_categories() {
+//        return [ 'general-elements' ];    // category of the widget
+//    }
 
     protected function _register_controls() {
         $this->start_controls_section(
