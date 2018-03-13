@@ -3,7 +3,7 @@
  * Plugin Name: Team Members for Elementor
  * Plugin URI:  http://pluginever.com
  * Description: Elementor extension fow showing team members profile
- * Version:     1.0.0
+ * Version:     1.0.1
  * Author:      manikmist09
  * Author URI:  http://manik.me
  * License:     GPLv2+
@@ -47,7 +47,7 @@ class Team_Members_For_Elementor {
      * @since 1.0.0
      * @var  string
      */
-    public $version = '1.0.0';
+    public $version = '1.0.1';
 
     /**
      * Minimum PHP version required
