@@ -3,16 +3,17 @@
  * Plugin Name: Team Members for Elementor
  * Plugin URI:  http://pluginever.com
  * Description: Elementor extension fow showing team members profile
- * Version:     1.0.1
- * Author:      manikmist09
- * Author URI:  http://manik.me
+ * Version:     1.0.2
+ * Author:      pluginever
+ * Author URI:  https://www.pluginever.com
+ * Donate link: https://www.pluginever.com
  * License:     GPLv2+
  * Text Domain: ever_team_members
  * Domain Path: /languages
  */
 
 /**
- * Copyright (c) 2018 PluginEver (email : support@pluginever.com)
+ * Copyright (c) 2019 PluginEver (email : support@pluginever.com)
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License, version 2 or, at
@@ -47,7 +48,7 @@ class Team_Members_For_Elementor {
      * @since 1.0.0
      * @var  string
      */
-    public $version = '1.0.1';
+    public $version = '1.0.2';
 
     /**
      * Minimum PHP version required
@@ -116,6 +117,7 @@ class Team_Members_For_Elementor {
      * @return void
      */
     private function define_constants() {
+
         define( 'TME_VERSION', $this->version );
         define( 'TME_FILE', __FILE__ );
         define( 'TME_PATH', dirname( TME_FILE ) );
