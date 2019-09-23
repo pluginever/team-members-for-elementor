@@ -1,4 +1,4 @@
-module.exports = function(grunt) {
+module.exports = function (grunt) {
     var pkg = grunt.file.readJSON('package.json');
     var bannerTemplate = '/**\n' +
         ' * <%= pkg.title %> - v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %>\n' +
@@ -15,48 +15,48 @@ module.exports = function(grunt) {
     // Project configuration
     grunt.initConfig({
 
-    pkg: grunt.file.readJSON('package.json'),
+        pkg: grunt.file.readJSON('package.json'),
 
-    concat: {
-        options: {
-            stripBanners: true,
-            banner: bannerTemplate
-        },
+        concat: {
+            options: {
+                stripBanners: true,
+                banner: bannerTemplate
+            },
             team_members_for_elementor: {
                 src: [
                     'assets/js/vendor/*.js',
                     'assets/js/src/team-members-for-elementor.js',
                 ],
-                    dest: 'assets/js/team-members-for-elementor.js'
+                dest: 'assets/js/team-members-for-elementor.js'
             }
         },
-    // jshint
-    jshint: {
-        options: {
-            jshintrc: '.jshintrc',
-                reporter: require('jshint-stylish')
-        },
-        main: [
-            'assets/js/src/*.js',
-        ]
-    },
-
-    uglify: {
-        all: {
-            files: {
-                'assets/js/team-members-for-elementor.min.js': ['assets/js/team-members-for-elementor.js']
-            },
+        // jshint
+        jshint: {
             options: {
-                banner: compactBannerTemplate,
-                mangle: false
+                jshintrc: '.jshintrc',
+                reporter: require('jshint-stylish')
             },
-            compress: {
-                drop_console: true
-            }
-        }
-    },
+            main: [
+                'assets/js/src/*.js',
+            ]
+        },
 
-        sass:   {
+        uglify: {
+            all: {
+                files: {
+                    'assets/js/team-members-for-elementor.min.js': ['assets/js/team-members-for-elementor.js']
+                },
+                options: {
+                    banner: compactBannerTemplate,
+                    mangle: false
+                },
+                compress: {
+                    drop_console: true
+                }
+            }
+        },
+
+        sass: {
             all: {
                 files: {
                     'assets/css/team-members-for-elementor.css': 'assets/css/sass/team-members-for-elementor.scss'
@@ -83,11 +83,10 @@ module.exports = function(grunt) {
             static: {
                 options: {
                     optimizationLevel: 3,
-                        svgoPlugins: [{removeViewBox: false}],
-                        use: [] // Example plugin usage
+                    svgoPlugins: [{removeViewBox: false}],
+                    use: [] // Example plugin usage
                 },
-                files: {
-                }
+                files: {}
             },
             dynamic: {
                 files: [{
@@ -99,8 +98,8 @@ module.exports = function(grunt) {
             }
         },
 
-        watch:  {
-             options: {
+        watch: {
+            options: {
                 livereload: true,
             },
 
@@ -137,86 +136,88 @@ module.exports = function(grunt) {
                 standard: 'WordPress'
             }
         },
-           // Generate POT files.
+        // Generate POT files.
         makepot: {
             target: {
                 options: {
                     exclude: ['build/.*', 'node_modules/*', 'assets/*'],
-                        domainPath: '/i18n/languages/', // Where to save the POT file.
-                        potFilename: 'team-members-for-elementor.pot', // Name of the POT file.
-                        type: 'wp-plugin', // Type of project (wp-plugin or wp-theme).
-                        potHeaders: {
+                    domainPath: '/i18n/languages/', // Where to save the POT file.
+                    potFilename: 'team-members-for-elementor.pot', // Name of the POT file.
+                    type: 'wp-plugin', // Type of project (wp-plugin or wp-theme).
+                    potHeaders: {
                         'report-msgid-bugs-to': 'http://pluginever.com/support/',
-                            'language-team': 'LANGUAGE <support@pluginever.com>'
+                        'language-team': 'LANGUAGE <support@pluginever.com>'
                     }
                 }
             }
         },
-            // Clean up build directory
+        // Clean up build directory
         clean: {
             main: ['build/']
         },
-          copy: {
-        main: {
-            src: [
-                '**',
-                '!node_modules/**',
-                '!**/js/src/**',
-                '!**/css/src/**',
-                '!**/js/vendor/**',
-                '!**/css/vendor/**',
-                '!**/images/src/**',
-                '!**/sass/**',
-                '!build/**',
-                '!**/*.md',
-                '!**/*.map',
-                '!**/*.sh',
-                '!.idea/**',
-                '!bin/**',
-                '!.git/**',
-                '!phpcs.xml.dist',
-                '!Gruntfile.js',
-                '!package.json',
-                '!composer.json',
-                '!composer.lock',
-                '!debug.log',
-                '!.gitignore',
-                '!.gitmodules',
-                '!npm-debug.log',
-                '!plugin-deploy.sh',
-                '!export.sh',
-                '!config.codekit',
-                '!nbproject/*',
-                '!tests/**',
-                '!.csscomb.json',
-                '!.editorconfig',
-                '!.jshintrc',
-                '!.tmp'
-            ],
+        copy: {
+            main: {
+                src: [
+                    '**',
+                    '!node_modules/**',
+                    '!**/js/src/**',
+                    '!**/css/src/**',
+                    '!**/js/vendor/**',
+                    '!**/css/vendor/**',
+                    '!**/css/*.scss',
+                    '!**/images/src/**',
+                    '!**/sass/**',
+                    '!**/test/**',
+                    '!**/tests/**',
+                    '!build/**',
+                    '!**/*.md',
+                    '!**/*.map',
+                    '!**/*.sh',
+                    '!.idea/**',
+                    '!bin/**',
+                    '!.git/**',
+                    '!.zip',
+                    '!Gruntfile.js',
+                    '!package.json',
+                    '!composer.json',
+                    '!composer.lock',
+                    '!package-lock.json',
+                    '!debug.log',
+                    '!yarn.lock',
+                    '!phpcs.xml',
+                    '!phpcs.xml',
+                    '!phpunit.xml',
+                    '!none',
+                    '!.gitignore',
+                    '!.gitmodules',
+                    '!phpcs.xml.dist',
+                    '!npm-debug.log',
+                    '!plugin-deploy.sh',
+                    '!export.sh',
+                    '!config.codekit',
+                    '!nbproject/*',
+                    '!tests/**',
+                    '!.csscomb.json',
+                    '!.editorconfig',
+                    '!.jshintrc',
+                    '!.tmp'
+                ],
                 dest: 'build/'
-        }
-    },
-      compress: {
-        main: {
-            options: {
-                mode: 'zip',
+            }
+        },
+        compress: {
+            main: {
+                options: {
+                    mode: 'zip',
                     archive: './build/team-members-for-elementor-' + pkg.version + '.zip'
-            },
-            expand: true,
+                },
+                expand: true,
                 cwd: 'build/',
                 src: ['**/*'],
                 dest: 'team-members-for-elementor'
+            }
         }
-    },
-    server: {
-        options: {
-            message: 'Server is ready!'
-        }
-    }
-
-
-
-});
+    });
 
 // Load other tasks
     grunt.loadNpmTasks('grunt-contrib-jshint');
@@ -227,7 +228,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-notify');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.loadNpmTasks( 'grunt-wp-i18n' );
+    grunt.loadNpmTasks('grunt-wp-i18n');
     grunt.loadNpmTasks('grunt-contrib-compress');
 
     grunt.loadNpmTasks('grunt-contrib-sass');
@@ -238,10 +239,11 @@ module.exports = function(grunt) {
 
     // Default task.
 
-    grunt.registerTask( 'default', ['jshint', 'concat', 'uglify', 'sass', 'cssmin', 'imagemin', 'notify:server'] );
+    grunt.registerTask('default', ['jshint', 'concat', 'uglify', 'sass', 'cssmin', 'imagemin', 'notify:server']);
 
 
     grunt.registerTask('release', ['makepot', 'zip']);
     grunt.registerTask('zip', ['clean', 'copy', 'compress']);
+    grunt.registerTask('build', ['clean', 'copy']);
     grunt.util.linefeed = '\n';
 };
