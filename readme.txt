@@ -3,7 +3,7 @@ Contributors: manikmist09,pluginever
 Donate link:
 Tags: elementor, team member, team members, elementor page builder
 Requires at least: 4.5
-Tested up to: 4.9.4
+Tested up to: 5.2.3
 Requires PHP: 5.4
 Stable tag: trunk
 License: GPLv3
@@ -40,6 +40,9 @@ This may have bugs and lack of many features. If you want to contribute to this 
 3. Team member builder
 
 == Changelog ==
+= 1.0.2 =
+* Fix - WP Compatibility
+
 = 1.0.1 =
 * Added to top category
 
