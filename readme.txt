@@ -40,6 +40,12 @@ This may have bugs and lack of many features. If you want to contribute to this 
 3. Team member builder
 
 == Changelog ==
+
+= 1.0.3 =
+* Fix - Text Domain
+* Added Social Profiles control
+* Added Style Tab
+
 = 1.0.2 =
 * Fix - WP Compatibility
 
