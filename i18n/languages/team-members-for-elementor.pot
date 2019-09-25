@@ -3,62 +3,215 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Team Members for Elementor 1.0.2\n"
-"Report-Msgid-Bugs-To: http://pluginever.com/support/\n"
-"POT-Creation-Date: 2019-09-23 04:40:46+00:00\n"
+"Report-Msgid-Bugs-To: "
+"https://wordpress.org/support/plugin/team-members-for-elementor\n"
+"POT-Creation-Date: 2019-09-25 10:21:08+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "PO-Revision-Date: 2019-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <support@pluginever.com>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "X-Generator: grunt-wp-i18n 1.0.3\n"
 
-#: includes/widgets/ever-team-members.php:16
+#: includes/widgets/ever-team-members.php:19
 msgid "Team Members"
 msgstr ""
 
-#: includes/widgets/ever-team-members.php:31
-msgid "Banner"
+#: includes/widgets/ever-team-members.php:34
+msgid "Member Image"
 msgstr ""
 
-#: includes/widgets/ever-team-members.php:38
-msgid "Photo"
+#: includes/widgets/ever-team-members.php:45
+msgid "Image"
 msgstr ""
 
-#: includes/widgets/ever-team-members.php:49
+#: includes/widgets/ever-team-members.php:70
+msgid "Member Information"
+msgstr ""
+
+#: includes/widgets/ever-team-members.php:78
 msgid "Name"
 msgstr ""
 
-#: includes/widgets/ever-team-members.php:51
-msgid "Member Name"
+#: includes/widgets/ever-team-members.php:80
+msgid "John Doe"
 msgstr ""
 
-#: includes/widgets/ever-team-members.php:52
+#: includes/widgets/ever-team-members.php:81
 msgid "Type name of the team member"
 msgstr ""
 
-#: includes/widgets/ever-team-members.php:59
+#: includes/widgets/ever-team-members.php:88
 msgid "Title"
 msgstr ""
 
-#: includes/widgets/ever-team-members.php:61
-msgid "Member Title"
+#: includes/widgets/ever-team-members.php:90
+msgid "CEO"
 msgstr ""
 
-#: includes/widgets/ever-team-members.php:62
+#: includes/widgets/ever-team-members.php:91
 msgid "Type title of the team member"
 msgstr ""
 
-#: includes/widgets/ever-team-members.php:69
-msgid "Social Links"
+#: includes/widgets/ever-team-members.php:98
+msgid "Short Bio"
 msgstr ""
 
-#: includes/widgets/ever-team-members.php:74
-msgid "Social Icon"
+#: includes/widgets/ever-team-members.php:100
+msgid ""
+"Write some description about the member. Remove the text if you don't want "
+"to."
 msgstr ""
 
-#: includes/widgets/ever-team-members.php:93
-msgid "Social Link"
+#: includes/widgets/ever-team-members.php:101
+msgid "Write some description about the member"
+msgstr ""
+
+#: includes/widgets/ever-team-members.php:108
+msgid "Alignment"
+msgstr ""
+
+#: includes/widgets/ever-team-members.php:112
+msgid "Left"
+msgstr ""
+
+#: includes/widgets/ever-team-members.php:116
+msgid "Center"
+msgstr ""
+
+#: includes/widgets/ever-team-members.php:120
+msgid "Right"
+msgstr ""
+
+#: includes/widgets/ever-team-members.php:124
+msgid "Justify"
+msgstr ""
+
+#: includes/widgets/ever-team-members.php:144
+msgid "Social Profiles"
+msgstr ""
+
+#: includes/widgets/ever-team-members.php:152
+msgid "Display Social Profiles?"
+msgstr ""
+
+#: includes/widgets/ever-team-members.php:188
+msgid "Icon"
+msgstr ""
+
+#: includes/widgets/ever-team-members.php:198
+msgid "Link"
+msgstr ""
+
+#: includes/widgets/ever-team-members.php:205
+msgid "Enter the URL"
+msgstr ""
+
+#: includes/widgets/ever-team-members.php:222
+msgid "Image Styles"
+msgstr ""
+
+#: includes/widgets/ever-team-members.php:230
+msgid "Rounded Avatar?"
+msgstr ""
+
+#: includes/widgets/ever-team-members.php:240
+msgid "Image Width"
+msgstr ""
+
+#: includes/widgets/ever-team-members.php:262
+msgid "Height"
+msgstr ""
+
+#: includes/widgets/ever-team-members.php:280
+msgid "Margin"
+msgstr ""
+
+#: includes/widgets/ever-team-members.php:292
+msgid "Padding"
+msgstr ""
+
+#: includes/widgets/ever-team-members.php:303
+#: includes/widgets/ever-team-members.php:311
+msgid "Border"
+msgstr ""
+
+#: includes/widgets/ever-team-members.php:319
+#: includes/widgets/ever-team-members.php:538
+msgid "Border Radius"
+msgstr ""
+
+#: includes/widgets/ever-team-members.php:336
+msgid "Information Styles"
+msgstr ""
+
+#: includes/widgets/ever-team-members.php:344
+msgid "Member Name"
+msgstr ""
+
+#: includes/widgets/ever-team-members.php:353
+msgid "Name Color"
+msgstr ""
+
+#: includes/widgets/ever-team-members.php:373
+msgid "Member Title"
+msgstr ""
+
+#: includes/widgets/ever-team-members.php:382
+msgid "Title Color"
+msgstr ""
+
+#: includes/widgets/ever-team-members.php:402
+msgid "Member Bio"
+msgstr ""
+
+#: includes/widgets/ever-team-members.php:411
+msgid "Bio Color"
+msgstr ""
+
+#: includes/widgets/ever-team-members.php:434
+msgid "Social Profiles Styles"
+msgstr ""
+
+#: includes/widgets/ever-team-members.php:442
+msgid "Icon Size"
+msgstr ""
+
+#: includes/widgets/ever-team-members.php:463
+msgid "Social Profiles Margin"
+msgstr ""
+
+#: includes/widgets/ever-team-members.php:480
+msgid "Icon Padding"
+msgstr ""
+
+#: includes/widgets/ever-team-members.php:501
+msgid "Normal"
+msgstr ""
+
+#: includes/widgets/ever-team-members.php:506
+msgid "Icon Color"
+msgstr ""
+
+#: includes/widgets/ever-team-members.php:518
+msgid "Background Color"
+msgstr ""
+
+#: includes/widgets/ever-team-members.php:553
+msgid "Hover"
+msgstr ""
+
+#: includes/widgets/ever-team-members.php:558
+msgid "Icon Hover Color"
+msgstr ""
+
+#: includes/widgets/ever-team-members.php:570
+msgid "Hover Background Color"
+msgstr ""
+
+#: includes/widgets/ever-team-members.php:581
+msgid "Hover Border Color"
 msgstr ""
 
 #: team-members-for-elementor.php:226

@@ -300,7 +300,7 @@ class Team_Members extends Widget_Base {
 
         $this->add_control( 'border_heading', [
             'type'      => Controls_Manager::HEADING,
-            'label'     => __( 'Border', 'ever-addons-for-elementor' ),
+            'label'     => __( 'Border', 'ever_team_members' ),
             'separator' => 'before',
         ] );
 
