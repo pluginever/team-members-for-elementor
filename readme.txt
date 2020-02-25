@@ -3,7 +3,7 @@ Contributors: manikmist09,pluginever
 Donate link:
 Tags: elementor, team member, team members, elementor page builder
 Requires at least: 4.5
-Tested up to: 5.2.3
+Tested up to: 5.3.2
 Requires PHP: 5.4
 Stable tag: trunk
 License: GPLv3
