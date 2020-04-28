@@ -9,6 +9,9 @@
     "email": "support@pluginever.com",
     "url": "http://pluginever.com"
   },
+  "scripts": {
+    "build": "grunt build"
+  },
   "devDependencies": {
     "grunt": "^1.0.4",
     "autoprefixer": "~8.6.2",

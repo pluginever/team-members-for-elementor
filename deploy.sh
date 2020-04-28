@@ -31,6 +31,7 @@ SVNPATH="/tmp/$PLUGINSLUG"
 SVNURL="https://plugins.svn.wordpress.org/$PLUGINSLUG"
 PLUGINDIR="$CURRENTDIR"
 MAINFILE="$PLUGINSLUG.php"
+BUILDPATH="$CURRENTDIR/build"
 ASSETSDIR=".wordpress-org"
 
 
@@ -67,6 +68,21 @@ elif [ "$PLUGINVERSION" = "$READMEVERSION" ]; then
 	warning "Versions match in readme.txt and $MAINFILE. Let's continue..."
 fi
 
+# Check version in readme.txt is the same as plugin file after translating both to Unix line breaks to work around grep's failure to identify Mac line breaks
+PLUGINVERSION=$(grep -i "Version:" $PLUGINDIR/$MAINFILE | awk -F' ' '{print $NF}' | tr -d '\r')
+status "$MAINFILE version: $PLUGINVERSION"
+READMEVERSION=$(grep -i "Stable tag:" $PLUGINDIR/readme.txt | awk -F' ' '{print $NF}' | tr -d '\r')
+status "readme.txt version: $READMEVERSION"
+
+if [ "$READMEVERSION" = "trunk" ]; then
+	status "Version in readme.txt & $MAINFILE don't match, but Stable tag is trunk. Let's continue..."
+elif [ "$PLUGINVERSION" != "$READMEVERSION" ]; then
+	error "Version in readme.txt & $MAINFILE don't match. Exiting...."
+	exit 1
+elif [ "$PLUGINVERSION" = "$READMEVERSION" ]; then
+	warning "Versions match in readme.txt and $MAINFILE. Let's continue..."
+fi
+
 success "That's all of the data collected."
 success "Slug: $PLUGINSLUG"
 success "Plugin directory: $PLUGINDIR"
@@ -86,24 +102,17 @@ if [ $(echo "$PROCEED" | tr [:upper:] [:lower:]) != "y" ]; then
 	error "Aborting..."
 	exit 1
 fi
+
+status "==========================="
 status "Lets begin...."
-
 status "Changing to $PLUGINDIR"
-status $PLUGINDIR
-
-# Check for git tag (may need to allow for leading "v"?)
-# if git show-ref --tags --quiet --verify -- "refs/tags/$PLUGINVERSION"
-if git show-ref --tags --quiet --verify -- "refs/tags/v$PLUGINVERSION"; then
-	status "Git tag $PLUGINVERSION does exist. Let's continue..."
-else
-	status "$PLUGINVERSION does not exist as a git tag. Aborting."
-	exit 1
-fi
+cd $PLUGINDIR
 
 status "Creating local copy of SVN repo trunk..."
 svn checkout $SVNURL $SVNPATH --depth immediates
 svn update --quiet $SVNPATH/trunk --set-depth infinity
 svn update --quiet $SVNPATH/tags/$PLUGINVERSION --set-depth infinity
+
 
 status "Ignoring GitHub specific files"
 # Use local .svnignore if present
@@ -143,12 +152,6 @@ if [ -f ".gitmodules" ]; then
 		done
 fi
 
-# Support for the /assets folder on the .org repo, locally this will be /.wordpress-org
-status "Moving assets."
-# Make the directory if it doesn't already exist
-mkdir -p $SVNPATH/assets/
-mv $SVNPATH/trunk/.wordpress-org/* $SVNPATH/assets/
-svn add --force $SVNPATH/assets/
 
 status "Changing directory to SVN and committing to trunk."
 cd $SVNPATH/trunk/
@@ -158,38 +161,4 @@ status "$SVNIGNORE" | awk '{print $0}' | xargs rm -rf
 svn status | grep -v "^.[ \t]*\..*" | grep "^\!" | awk '{print $2"@"}' | xargs svn del
 # Add all new files that are not set to be ignored
 svn status | grep -v "^.[ \t]*\..*" | grep "^?" | awk '{print $2"@"}' | xargs svn add
-svn commit --username=$SVNUSER -m "Preparing for $PLUGINVERSION release"
-
-status "Updating WordPress plugin repo assets and committing."
-cd $SVNPATH/assets/
-# Delete all new files that are not set to be ignored
-svn status | grep -v "^.[ \t]*\..*" | grep "^\!" | awk '{print $2"@"}' | xargs svn del
-# Add all new files that are not set to be ignored
-svn status | grep -v "^.[ \t]*\..*" | grep "^?" | awk '{print $2"@"}' | xargs svn add
-svn update --quiet --accept working $SVNPATH/assets/*
-svn resolve --accept working $SVNPATH/assets/*
-svn commit --username=$SVNUSER -m "Updating assets"
-
-status "Creating new SVN tag and committing it."
-cd $SVNPATH
-# If current tag not empty then update readme.txt
-if [ -n "$(ls -A tags/$PLUGINVERSION 2>/dev/null)" ]; then
-	status "Updating readme.txt to tag $PLUGINVERSION"
-	svn delete --force tags/$PLUGINVERSION/readme.txt
-	svn copy trunk/readme.txt tags/$PLUGINVERSION
-fi
-svn copy --quiet trunk/ tags/$PLUGINVERSION/
-# Remove trunk directories from tag directory
-svn delete --force --quiet $SVNPATH/tags/$PLUGINVERSION/trunk
-svn update --quiet --accept working $SVNPATH/tags/$PLUGINVERSION
-#svn resolve --accept working $SVNPATH/tags/$PLUGINVERSION/*
-cd $SVNPATH/tags/$PLUGINVERSION
-svn commit --username=$SVNUSER -m "Tagging version $PLUGINVERSION"
-
-status "Removing temporary directory $SVNPATH."
-
-cd $SVNPATH
-cd ..
-rm -fr $SVNPATH/
-
-success "*** FIN ***"
+#svn commit --username=$SVNUSER -m "Preparing for $PLUGINVERSION release"
