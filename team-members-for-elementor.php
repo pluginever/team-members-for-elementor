@@ -3,7 +3,7 @@
  * Plugin Name: Team Members for Elementor
  * Plugin URI:  http://pluginever.com
  * Description: Elementor extension fow showing team members profile
- * Version:     1.0.4
+ * Version:     1.0.3
  * Author:      pluginever
  * Author URI:  https://www.pluginever.com
  * Donate link: https://www.pluginever.com
