@@ -11,6 +11,7 @@
 *.zip
 *.tgz
 *.map
+*.scss
 
 # Logs and databases #
 ######################
@@ -69,3 +70,9 @@ assets/sass/HTML
 assets/sass/Rails
 HTML
 Rails
+
+
+#Build Related
+package-lock.json
+phpcs.xml.dist
+plugin-deploy.sh
