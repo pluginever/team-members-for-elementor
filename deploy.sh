@@ -68,7 +68,6 @@ elif [ "$PLUGINVERSION" = "$READMEVERSION" ]; then
 fi
 
 success "That's all of the data collected."
-success
 success "Slug: $PLUGINSLUG"
 success "Plugin directory: $PLUGINDIR"
 success "Main file: $MAINFILE"
@@ -171,7 +170,24 @@ svn update --quiet --accept working $SVNPATH/assets/*
 svn resolve --accept working $SVNPATH/assets/*
 svn commit --username=$SVNUSER -m "Updating assets"
 
+status "Creating new SVN tag and committing it."
+cd $SVNPATH
+# If current tag not empty then update readme.txt
+if [ -n "$(ls -A tags/$PLUGINVERSION 2>/dev/null)" ]; then
+	status "Updating readme.txt to tag $PLUGINVERSION"
+	svn delete --force tags/$PLUGINVERSION/readme.txt
+	svn copy trunk/readme.txt tags/$PLUGINVERSION
+fi
+svn copy --quiet trunk/ tags/$PLUGINVERSION/
+# Remove trunk directories from tag directory
+svn delete --force --quiet $SVNPATH/tags/$PLUGINVERSION/trunk
+svn update --quiet --accept working $SVNPATH/tags/$PLUGINVERSION
+#svn resolve --accept working $SVNPATH/tags/$PLUGINVERSION/*
+cd $SVNPATH/tags/$PLUGINVERSION
+svn commit --username=$SVNUSER -m "Tagging version $PLUGINVERSION"
+
 status "Removing temporary directory $SVNPATH."
+
 cd $SVNPATH
 cd ..
 rm -fr $SVNPATH/

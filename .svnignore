@@ -11,6 +11,7 @@
 *.zip
 *.tgz
 *.map
+*.scss
 
 # Logs and databases #
 ######################
