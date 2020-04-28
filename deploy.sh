@@ -1,4 +1,9 @@
 #! /bin/bash
+# ----- START EDITING HERE -----
+PLUGINSLUG="team-members-for-elementor"
+SVNUSER="manikmist09"
+# ----- STOP EDITING HERE -----
+
 # Exit if any command fails.
 set -e
 
@@ -9,37 +14,41 @@ RED_BOLD='\033[1;31m';
 YELLOW_BOLD='\033[1;33m';
 COLOR_RESET='\033[0m';
 error () {
-	echo -e "\n${RED_BOLD}$1${COLOR_RESET}"
+	echo -e "${RED_BOLD}$1${COLOR_RESET}"
 }
 status () {
-	echo -e "\n${BLUE_BOLD}$1${COLOR_RESET}"
+	echo -e "${BLUE_BOLD}$1${COLOR_RESET}"
 }
 success () {
-	echo -e "\n${GREEN_BOLD}$1${COLOR_RESET}"
+	echo -e "${GREEN_BOLD}$1${COLOR_RESET}"
 }
 warning () {
-	echo -e "\n${YELLOW_BOLD}$1${COLOR_RESET}"
+	echo -e "${YELLOW_BOLD}$1${COLOR_RESET}"
 }
 
-status "💃 Time to release plugin 🕺"
+# ASK INFO
+status "--------------------------------------------"
+status "      Github to WordPress.org RELEASER      "
+status "--------------------------------------------"
+read -p "TAG AND RELEASE VERSION: " VERSION
+status "--------------------------------------------"
+status ""
+status "Before continuing, confirm that you have done the following :)"
+status ""
+read -p " - Added a changelog for "${VERSION}"?"
+read -p " - Set version in the readme.txt and main file to "${VERSION}"?"
+read -p " - Set stable tag in the readme.txt file to "${VERSION}"?"
+read -p " - Updated the POT file?"
+read -p " - Committed all changes up to GITHUB?"
+status ""
+read -p "PRESS [ENTER] TO BEGIN RELEASING "${VERSION}
 
-# Set up some default values. Feel free to change these in your own script
 CURRENTDIR=$(pwd)
-PLUGINSLUG="team-members-for-elementor"
-SVNUSER="manikmist09"
 SVNPATH="/tmp/$PLUGINSLUG"
 SVNURL="https://plugins.svn.wordpress.org/$PLUGINSLUG"
 PLUGINDIR="$CURRENTDIR"
 MAINFILE="$PLUGINSLUG.php"
-BUILDPATH="$CURRENTDIR/build"
 ASSETSDIR=".wordpress-org"
-
-
-# Check directory exists.
-if [ ! -d "$PLUGINDIR" ]; then
-	error "Directory $PLUGINDIR not found. Aborting."
-	exit 1
-fi
 
 # Check if SVN assets directory exists.
 if [ ! -d "$PLUGINDIR/$ASSETSDIR" ]; then
@@ -47,91 +56,28 @@ if [ ! -d "$PLUGINDIR/$ASSETSDIR" ]; then
 	warning "This is not fatal but you may not have intended results."
 fi
 
-# Check main plugin file exists.
-if [ ! -f "$PLUGINDIR/$MAINFILE" ]; then
-	error "Plugin file $PLUGINDIR/$MAINFILE.php not found. Aborting."
-	exit 1
-fi
-
-# Check version in readme.txt is the same as plugin file after translating both to Unix line breaks to work around grep's failure to identify Mac line breaks
-PLUGINVERSION=$(grep -i "Version:" $PLUGINDIR/$MAINFILE | awk -F' ' '{print $NF}' | tr -d '\r')
-status "$MAINFILE version: $PLUGINVERSION"
-READMEVERSION=$(grep -i "Stable tag:" $PLUGINDIR/readme.txt | awk -F' ' '{print $NF}' | tr -d '\r')
-status "readme.txt version: $READMEVERSION"
-
-if [ "$READMEVERSION" = "trunk" ]; then
-	status "Version in readme.txt & $MAINFILE don't match, but Stable tag is trunk. Let's continue..."
-elif [ "$PLUGINVERSION" != "$READMEVERSION" ]; then
-	error "Version in readme.txt & $MAINFILE don't match. Exiting...."
-	exit 1
-elif [ "$PLUGINVERSION" = "$READMEVERSION" ]; then
-	warning "Versions match in readme.txt and $MAINFILE. Let's continue..."
-fi
-
-# Check version in readme.txt is the same as plugin file after translating both to Unix line breaks to work around grep's failure to identify Mac line breaks
-PLUGINVERSION=$(grep -i "Version:" $PLUGINDIR/$MAINFILE | awk -F' ' '{print $NF}' | tr -d '\r')
-status "$MAINFILE version: $PLUGINVERSION"
-READMEVERSION=$(grep -i "Stable tag:" $PLUGINDIR/readme.txt | awk -F' ' '{print $NF}' | tr -d '\r')
-status "readme.txt version: $READMEVERSION"
-
-if [ "$READMEVERSION" = "trunk" ]; then
-	status "Version in readme.txt & $MAINFILE don't match, but Stable tag is trunk. Let's continue..."
-elif [ "$PLUGINVERSION" != "$READMEVERSION" ]; then
-	error "Version in readme.txt & $MAINFILE don't match. Exiting...."
-	exit 1
-elif [ "$PLUGINVERSION" = "$READMEVERSION" ]; then
-	warning "Versions match in readme.txt and $MAINFILE. Let's continue..."
-fi
-
-success "That's all of the data collected."
-success "Slug: $PLUGINSLUG"
-success "Plugin directory: $PLUGINDIR"
-success "Main file: $MAINFILE"
-success "Temp checkout path: $SVNPATH"
-success "Remote SVN repo: $SVNURL"
-success "SVN username: $SVNUSER"
-
-
-printf "OK to proceed (Y|n)? "
-read -e input
-PROCEED="${input:-y}"
 echo
-
-# Allow user cancellation
-if [ $(echo "$PROCEED" | tr [:upper:] [:lower:]) != "y" ]; then
-	error "Aborting..."
-	exit 1
-fi
-
-status "==========================="
-status "Lets begin...."
-status "Changing to $PLUGINDIR"
-cd $PLUGINDIR
-
+success "💃 Time to release plugin 🕺"
+echo
 status "Creating local copy of SVN repo trunk..."
+rm -rf  $SVNPATH
 svn checkout $SVNURL $SVNPATH --depth immediates
+svn update --quiet $SVNPATH/assets --set-depth infinity
 svn update --quiet $SVNPATH/trunk --set-depth infinity
-svn update --quiet $SVNPATH/tags/$PLUGINVERSION --set-depth infinity
+svn update --quiet $SVNPATH/tags/$VERSION --set-depth infinity
 
+status ""
+status -p "PRESS [ENTER] TO DEPLOY VERSION "${VERSION}
 
-status "Ignoring GitHub specific files"
-# Use local .svnignore if present
-if [ -f ".svnignore" ]; then
-	status "Using local .svnignore"
-	SVNIGNORE=$(<.svnignore)
-else
-	status "Using default .svnignore"
-	SVNIGNORE="README.md
-Thumbs.db
-.github
-.git
-.gitattributes
-.gitignore
-composer.lock"
-fi
+# UPDATE SVN
+status "Updating SVN"
+svn update $SVNPATH || { echo "Unable to update SVN."; exit 1; }
 
-svn propset svn:ignore \""$SVNIGNORE"\" "$SVNPATH/trunk/"
+status "Replacing trunk"
+rm -Rf $SVNPATH/trunk/*
 
+status "Moving to git "
+cd  $PLUGINDIR;
 status "Exporting the HEAD of master from git to the trunk of SVN"
 git checkout-index -a -f --prefix=$SVNPATH/trunk/
 
@@ -159,50 +105,121 @@ mkdir -p $SVNPATH/assets/
 mv $SVNPATH/trunk/.wordpress-org/* $SVNPATH/assets/
 svn add --force $SVNPATH/assets/
 
-status "Changing directory to SVN and committing to trunk."
-cd $SVNPATH/trunk/
-# Delete all files that should not now be added.
-# Use $SVNIGNORE for `rm -rf`. Setting propset svn:ignore seems flaky.
-status "$SVNIGNORE" | awk '{print $0}' | xargs rm -rf
-svn status | grep -v "^.[ \t]*\..*" | grep "^\!" | awk '{print $2"@"}' | xargs svn del
-# Add all new files that are not set to be ignored
-svn status | grep -v "^.[ \t]*\..*" | grep "^?" | awk '{print $2"@"}' | xargs svn add
-svn  del .svnignore
-svn commit --username=$SVNUSER -m "Preparing for $PLUGINVERSION release"
-
-
-status "Updating WordPress plugin repo assets and committing."
-cd $SVNPATH/assets/
-# Delete all new files that are not set to be ignored
-svn status | grep -v "^.[ \t]*\..*" | grep "^\!" | awk '{print $2"@"}' | xargs svn del
-# Add all new files that are not set to be ignored
-svn status | grep -v "^.[ \t]*\..*" | grep "^?" | awk '{print $2"@"}' | xargs svn add
-svn update --quiet --accept working $SVNPATH/assets/*
-svn resolve --accept working $SVNPATH/assets/*
-svn commit --username=$SVNUSER -m "Updating assets"
-
-
-status "Creating new SVN tag and committing it."
+# REMOVE UNWANTED FILES & FOLDERS
 cd $SVNPATH
-# If current tag not empty then update readme.txt
-if [ -n "$(ls -A tags/$PLUGINVERSION 2>/dev/null)" ]; then
-	status "Updating readme.txt to tag $PLUGINVERSION"
-	svn delete --force tags/$PLUGINVERSION/readme.txt
-	svn copy trunk/readme.txt tags/$PLUGINVERSION
+status "Removing unwanted files"
+rm -Rf trunk/.git
+rm -Rf trunk/.github
+rm -Rf trunk/.wordpress-org
+rm -Rf trunk/.svnignore
+rm -Rf trunk/apigen
+rm -Rf trunk/tests
+rm -f trunk/.coveralls.yml
+rm -f trunk/.editorconfig
+rm -f trunk/.gitattributes
+rm -f trunk/.gitignore
+rm -f trunk/.gitmodules
+rm -f trunk/.jscrsrc
+rm -f trunk/.jshintrc
+rm -f trunk/.scrutinizer.yml
+rm -f trunk/.stylelintrc
+rm -f trunk/.travis.yml
+rm -f trunk/apigen.neon
+rm -f trunk/CHANGELOG.txt
+rm -f trunk/CODE_OF_CONDUCT.md
+rm -f trunk/composer.json
+rm -f trunk/composer.lock
+rm -f trunk/CONTRIBUTING.md
+rm -f trunk/docker-compose.yml
+rm -f trunk/Gruntfile.js
+rm -f trunk/package.json
+rm -f trunk/phpcs.xml
+rm -f trunk/phpunit.xml
+rm -f trunk/phpunit.xml.dist
+rm -f trunk/README.md
+rm -f trunk/deploy.sh
+rm -f trunk/package-lock.json
+rm -f trunk/phpcs.xml.dist
+
+# DO THE ADD ALL NOT KNOWN FILES UNIX COMMAND
+svn add --force * --auto-props --parents --depth infinity -q
+
+svn status | grep -v "^.[ \t]*\..*" | grep "^\!" | awk '{print $2"@"}' | xargs svn del
+# Add all new files that are not set to be ignored
+svn status | grep -v "^.[ \t]*\..*" | grep "^?" | awk '{print $2"@"}' | xargs svn add
+
+# DO SVN COMMIT
+status "Showing SVN status"
+svn status
+
+# PROMPT USER
+echo ""
+printf "CONFIRM TO COMMIT RELEASE (Y|N)? "
+echo ""
+read -e input
+PROCEED="${input:-y}"
+echo
+
+# Allow user cancellation
+if [ $(echo "$PROCEED" | tr [:upper:] [:lower:]) == "y" ]; then
+	status "Pushing..."
+	svn commit --username=$SVNUSER -m "Preparing for $VERSION release"
+else
+    warning "Aboring..."
 fi
-svn copy --quiet trunk/ tags/$PLUGINVERSION/
-# Remove trunk directories from tag directory
-svn delete --force --quiet $SVNPATH/tags/$PLUGINVERSION/trunk
-svn update --quiet --accept working $SVNPATH/tags/$PLUGINVERSION
-#svn resolve --accept working $SVNPATH/tags/$PLUGINVERSION/*
-cd $SVNPATH/tags/$PLUGINVERSION
-svn commit --username=$SVNUSER -m "Tagging version $PLUGINVERSION"
+
+
+# PROMPT USER
+echo ""
+printf "CONFIRM TO UPDATE ASSETS (Y|N)? "
+echo ""
+read -e input
+PROCEED="${input:-y}"
+echo ""
+
+# Allow user cancellation
+if [ $(echo "$PROCEED" | tr [:upper:] [:lower:]) == "y" ]; then
+	status "Updating WordPress plugin repo assets and committing."
+    cd $SVNPATH/assets/
+    # Delete all new files that are not set to be ignored
+    svn status | grep -v "^.[ \t]*\..*" | grep "^\!" | awk '{print $2"@"}' | xargs svn del
+    # Add all new files that are not set to be ignored
+    svn status | grep -v "^.[ \t]*\..*" | grep "^?" | awk '{print $2"@"}' | xargs svn add
+    svn update --quiet --accept working $SVNPATH/assets/*
+    svn resolve --accept working $SVNPATH/assets/*
+    svn commit --username=$SVNUSER -m "Updating assets"
+else
+    warning "Aboring assets push ..."
+fi
+
+
+# PROMPT USER
+echo ""
+printf "CONFIRM TO TAG (Y|N)? "
+echo ""
+read -e input
+PROCEED="${input:-y}"
+echo ""
+
+# Allow user cancellation
+if [ $(echo "$PROCEED" | tr [:upper:] [:lower:]) == "y" ]; then
+    status "Creating new SVN tag and committing it."
+    cd $SVNPATH
+    svn copy --quiet trunk/ tags/$VERSION/
+    # Remove trunk directories from tag directory
+    svn delete --force --quiet $SVNPATH/tags/$VERSION/trunk
+    svn update --quiet --accept working $SVNPATH/tags/$VERSION
+    svn resolve --accept working $SVNPATH/tags/$VERSION/*
+    cd $SVNPATH/tags/$VERSION
+    svn commit --username=$SVNUSER -m "Tagging version $VERSION"
+else
+    warning "Aboring tag..."
+fi
+
 
 status "Removing temporary directory $SVNPATH."
 
 cd $SVNPATH
-cd ..
 rm -fr $SVNPATH/
 
 success "*** FIN ***"
-
