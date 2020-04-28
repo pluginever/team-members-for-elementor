@@ -152,6 +152,12 @@ if [ -f ".gitmodules" ]; then
 		done
 fi
 
+# Support for the /assets folder on the .org repo, locally this will be /.wordpress-org
+status "Moving assets."
+# Make the directory if it doesn't already exist
+mkdir -p $SVNPATH/assets/
+mv $SVNPATH/trunk/.wordpress-org/* $SVNPATH/assets/
+svn add --force $SVNPATH/assets/
 
 status "Changing directory to SVN and committing to trunk."
 cd $SVNPATH/trunk/
@@ -161,4 +167,42 @@ status "$SVNIGNORE" | awk '{print $0}' | xargs rm -rf
 svn status | grep -v "^.[ \t]*\..*" | grep "^\!" | awk '{print $2"@"}' | xargs svn del
 # Add all new files that are not set to be ignored
 svn status | grep -v "^.[ \t]*\..*" | grep "^?" | awk '{print $2"@"}' | xargs svn add
-#svn commit --username=$SVNUSER -m "Preparing for $PLUGINVERSION release"
+svn  del .svnignore
+svn commit --username=$SVNUSER -m "Preparing for $PLUGINVERSION release"
+
+
+status "Updating WordPress plugin repo assets and committing."
+cd $SVNPATH/assets/
+# Delete all new files that are not set to be ignored
+svn status | grep -v "^.[ \t]*\..*" | grep "^\!" | awk '{print $2"@"}' | xargs svn del
+# Add all new files that are not set to be ignored
+svn status | grep -v "^.[ \t]*\..*" | grep "^?" | awk '{print $2"@"}' | xargs svn add
+svn update --quiet --accept working $SVNPATH/assets/*
+svn resolve --accept working $SVNPATH/assets/*
+svn commit --username=$SVNUSER -m "Updating assets"
+
+
+status "Creating new SVN tag and committing it."
+cd $SVNPATH
+# If current tag not empty then update readme.txt
+if [ -n "$(ls -A tags/$PLUGINVERSION 2>/dev/null)" ]; then
+	status "Updating readme.txt to tag $PLUGINVERSION"
+	svn delete --force tags/$PLUGINVERSION/readme.txt
+	svn copy trunk/readme.txt tags/$PLUGINVERSION
+fi
+svn copy --quiet trunk/ tags/$PLUGINVERSION/
+# Remove trunk directories from tag directory
+svn delete --force --quiet $SVNPATH/tags/$PLUGINVERSION/trunk
+svn update --quiet --accept working $SVNPATH/tags/$PLUGINVERSION
+#svn resolve --accept working $SVNPATH/tags/$PLUGINVERSION/*
+cd $SVNPATH/tags/$PLUGINVERSION
+svn commit --username=$SVNUSER -m "Tagging version $PLUGINVERSION"
+
+status "Removing temporary directory $SVNPATH."
+
+cd $SVNPATH
+cd ..
+rm -fr $SVNPATH/
+
+success "*** FIN ***"
+

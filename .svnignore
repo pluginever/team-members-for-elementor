@@ -6,4 +6,6 @@ Gruntfile.js
 package-lock.json
 package.json
 *.scss
+.wordpress-org
+.svnignore
 
