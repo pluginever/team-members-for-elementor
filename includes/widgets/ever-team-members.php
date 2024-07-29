@@ -616,9 +616,9 @@ class Team_Members extends Widget_Base {
 
         ?>
 
-        <div class="ever-elements ee-team-members <?php echo esc_attr( $classes ); ?>">
+        <div class="ever-elements ee-team-members <?php echo $classes; ?>">
             <div class="ee-team-members-container">
-                <?php printf( '<img %1$s>', esc_url( $this->get_render_attribute_string( 'member_photo' ) ) ); ?>
+                <?php printf( '<img %1$s>', $this->get_render_attribute_string( 'member_photo' ) ); ?>
             </div>
 
             <div class="ee-team-members-bottom-container">
