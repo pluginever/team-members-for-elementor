@@ -1,19 +1,22 @@
 <?php
 /**
- * Plugin Name: Team Members for Elementor
- * Plugin URI:  http://pluginever.com
- * Description: Elementor extension fow showing team members profile
- * Version:     1.0.4
- * Author:      pluginever
- * Author URI:  https://www.pluginever.com
- * Donate link: https://www.pluginever.com
- * License:     GPLv2+
- * Text Domain: ever_team_members
- * Domain Path: /languages
+ * Plugin Name:       Team Members for Elementor
+ * Plugin URI:        http://pluginever.com
+ * Description:       Elementor's extension fow showing team members profile.
+ * Version:           1.0.5
+ * Author:            pluginever
+ * Author URI:        https://www.pluginever.com
+ * Donate link:       https://www.pluginever.com
+ * License:           GPLv2+
+ * Text Domain:       team-members-for-elementor
+ * Domain Path:       i18n/languages
+ * Requires at least: 5.2
+ * Tested up to:      6.6
+ * Requires PHP:      7.4
  */
 
 /**
- * Copyright (c) 2019 PluginEver (email : support@pluginever.com)
+ * Copyright (c) 2024 PluginEver (email : support@pluginever.com)
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License, version 2 or, at
@@ -48,14 +51,14 @@ class Team_Members_For_Elementor {
      * @since 1.0.0
      * @var  string
      */
-    public $version = '1.0.4';
+    public $version = '1.0.5';
 
     /**
      * Minimum PHP version required
      *
      * @var string
      */
-    private $min_php = '5.4.0';
+    private $min_php = '7.4';
 
 
     /**
@@ -165,7 +168,7 @@ class Team_Members_For_Elementor {
      * @return void
      */
     public function localization_setup() {
-        load_plugin_textdomain( 'ever_team_members', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+        load_plugin_textdomain( 'team-members-for-elementor', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
     }
 
     /**
@@ -223,8 +226,8 @@ class Team_Members_For_Elementor {
             return;
         }
 
-        $error = __( 'Your installed PHP Version is: ', 'ever_team_members' ) . PHP_VERSION . '. ';
-        $error .= __( 'The <strong>Team Members for Elementor</strong> plugin requires PHP version <strong>', 'ever_team_members' ) . $this->min_php . __( '</strong> or greater.', 'ever_team_members' );
+        $error = __( 'Your installed PHP Version is: ', 'team-members-for-elementor' ) . PHP_VERSION . '. ';
+        $error .= __( 'The <strong>Team Members for Elementor</strong> plugin requires PHP version <strong>', 'team-members-for-elementor' ) . $this->min_php . __( '</strong> or greater.', 'team-members-for-elementor' );
         ?>
         <div class="error">
             <p><?php printf( $error ); ?></p>
@@ -244,13 +247,13 @@ class Team_Members_For_Elementor {
 
         deactivate_plugins( plugin_basename( __FILE__ ) );
 
-        $error = __( '<h1>An Error Occured</h1>', 'ever_team_members' );
-        $error .= __( '<h2>Your installed PHP Version is: ', 'ever_team_members' ) . PHP_VERSION . '</h2>';
-        $error .= __( '<p>The <strong>Team Members for Elementor</strong> plugin requires PHP version <strong>', 'ever_team_members' ) . $this->min_php . __( '</strong> or greater', 'ever_team_members' );
-        $error .= __( '<p>The version of your PHP is ', 'ever_team_members' ) . '<a href="http://php.net/supported-versions.php" target="_blank"><strong>' . __( 'unsupported and old', 'ever_team_members' ) . '</strong></a>.';
-        $error .= __( 'You should update your PHP software or contact your host regarding this matter.</p>', 'ever_team_members' );
+        $error = __( '<h1>An Error Occured</h1>', 'team-members-for-elementor' );
+        $error .= __( '<h2>Your installed PHP Version is: ', 'team-members-for-elementor' ) . PHP_VERSION . '</h2>';
+        $error .= __( '<p>The <strong>Team Members for Elementor</strong> plugin requires PHP version <strong>', 'team-members-for-elementor' ) . $this->min_php . __( '</strong> or greater', 'team-members-for-elementor' );
+        $error .= __( '<p>The version of your PHP is ', 'team-members-for-elementor' ) . '<a href="http://php.net/supported-versions.php" target="_blank"><strong>' . __( 'unsupported and old', 'team-members-for-elementor' ) . '</strong></a>.';
+        $error .= __( 'You should update your PHP software or contact your host regarding this matter.</p>', 'team-members-for-elementor' );
 
-        wp_die( $error, __( 'Plugin Activation Error', 'ever_team_members' ), array( 'back_link' => true ) );
+        wp_die( $error, __( 'Plugin Activation Error', 'team-members-for-elementor' ), array( 'back_link' => true ) );
     }
 
 

@@ -1,17 +1,17 @@
-# Copyright (C) 2020 pluginever
+# Copyright (C) 2024 pluginever
 # This file is distributed under the GPLv2+.
 msgid ""
 msgstr ""
-"Project-Id-Version: Team Members for Elementor 1.0.3\n"
+"Project-Id-Version: Team Members for Elementor 1.0.5\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/team-members-for-elementor\n"
-"POT-Creation-Date: 2020-04-28 17:31:45+00:00\n"
+"POT-Creation-Date: 2024-07-29 11:11:32+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2020-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2024-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "X-Generator: grunt-wp-i18n 1.0.3\n"
 
 #: includes/widgets/ever-team-members.php:19
@@ -214,53 +214,53 @@ msgstr ""
 msgid "Hover Border Color"
 msgstr ""
 
-#: team-members-for-elementor.php:226
+#: team-members-for-elementor.php:229
 msgid "Your installed PHP Version is: "
 msgstr ""
 
-#: team-members-for-elementor.php:227
+#: team-members-for-elementor.php:230
 msgid ""
 "The <strong>Team Members for Elementor</strong> plugin requires PHP version "
 "<strong>"
 msgstr ""
 
-#: team-members-for-elementor.php:227
+#: team-members-for-elementor.php:230
 msgid "</strong> or greater."
 msgstr ""
 
-#: team-members-for-elementor.php:247
+#: team-members-for-elementor.php:250
 msgid "<h1>An Error Occured</h1>"
 msgstr ""
 
-#: team-members-for-elementor.php:248
+#: team-members-for-elementor.php:251
 msgid "<h2>Your installed PHP Version is: "
 msgstr ""
 
-#: team-members-for-elementor.php:249
+#: team-members-for-elementor.php:252
 msgid ""
 "<p>The <strong>Team Members for Elementor</strong> plugin requires PHP "
 "version <strong>"
 msgstr ""
 
-#: team-members-for-elementor.php:249
+#: team-members-for-elementor.php:252
 msgid "</strong> or greater"
 msgstr ""
 
-#: team-members-for-elementor.php:250
+#: team-members-for-elementor.php:253
 msgid "<p>The version of your PHP is "
 msgstr ""
 
-#: team-members-for-elementor.php:250
+#: team-members-for-elementor.php:253
 msgid "unsupported and old"
 msgstr ""
 
-#: team-members-for-elementor.php:251
+#: team-members-for-elementor.php:254
 msgid ""
 "You should update your PHP software or contact your host regarding this "
 "matter.</p>"
 msgstr ""
 
-#: team-members-for-elementor.php:253
+#: team-members-for-elementor.php:256
 msgid "Plugin Activation Error"
 msgstr ""
 
@@ -273,7 +273,7 @@ msgid "http://pluginever.com"
 msgstr ""
 
 #. Description of the plugin/theme
-msgid "Elementor extension fow showing team members profile"
+msgid "Elementor extension fow showing team members profile."
 msgstr ""
 
 #. Author of the plugin/theme

@@ -16,7 +16,7 @@ class Team_Members extends Widget_Base {
     }
 
     public function get_title() {
-        return __( 'Team Members', 'ever_team_members' );
+        return __( 'Team Members', 'team-members-for-elementor' );
     }
 
     public function get_icon() {
@@ -31,7 +31,7 @@ class Team_Members extends Widget_Base {
         $this->start_controls_section(
             'member_image',
             [
-                'label' => __( 'Member Image', 'ever_team_members' ),
+                'label' => __( 'Member Image', 'team-members-for-elementor' ),
                 'tab'   => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -42,7 +42,7 @@ class Team_Members extends Widget_Base {
         $this->add_control(
             'member_photo',
             [
-                'label'   => __( 'Image', 'ever_team_members' ),
+                'label'   => __( 'Image', 'team-members-for-elementor' ),
                 'type'    => Controls_Manager::MEDIA,
                 'default' => [
                     'url' => Utils::get_placeholder_image_src(),
@@ -67,7 +67,7 @@ class Team_Members extends Widget_Base {
         $this->start_controls_section(
             'member_info',
             [
-                'label' => __( 'Member Information', 'ever_team_members' ),
+                'label' => __( 'Member Information', 'team-members-for-elementor' ),
                 'tab'   => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -75,53 +75,53 @@ class Team_Members extends Widget_Base {
         $this->add_control(
             'member_name',
             [
-                'label'       => __( 'Name', 'ever_team_members' ),
+                'label'       => __( 'Name', 'team-members-for-elementor' ),
                 'type'        => Controls_Manager::TEXT,
-                'default'     => __( 'John Doe', 'ever_team_members' ),
-                'placeholder' => __( 'Type name of the team member', 'ever_team_members' ),
+                'default'     => __( 'John Doe', 'team-members-for-elementor' ),
+                'placeholder' => __( 'Type name of the team member', 'team-members-for-elementor' ),
             ]
         );
 
         $this->add_control(
             'member_title',
             [
-                'label'       => __( 'Title', 'ever_team_members' ),
+                'label'       => __( 'Title', 'team-members-for-elementor' ),
                 'type'        => Controls_Manager::TEXT,
-                'default'     => __( 'CEO', 'ever_team_members' ),
-                'placeholder' => __( 'Type title of the team member', 'ever_team_members' ),
+                'default'     => __( 'CEO', 'team-members-for-elementor' ),
+                'placeholder' => __( 'Type title of the team member', 'team-members-for-elementor' ),
             ]
         );
 
         $this->add_control(
             'member_bio',
             [
-                'label'       => __( 'Short Bio', 'ever_team_members' ),
+                'label'       => __( 'Short Bio', 'team-members-for-elementor' ),
                 'type'        => Controls_Manager::TEXTAREA,
-                'default'     => __( 'Write some description about the member. Remove the text if you don\'t want to.', 'ever_team_members' ),
-                'placeholder' => __( 'Write some description about the member', 'ever_team_members' ),
+                'default'     => __( 'Write some description about the member. Remove the text if you don\'t want to.', 'team-members-for-elementor' ),
+                'placeholder' => __( 'Write some description about the member', 'team-members-for-elementor' ),
             ]
         );
 
         $this->add_responsive_control(
             'align',
             [
-                'label'     => __( 'Alignment', 'ever_team_members' ),
+                'label'     => __( 'Alignment', 'team-members-for-elementor' ),
                 'type'      => Controls_Manager::CHOOSE,
                 'options'   => [
                     'left'    => [
-                        'title' => __( 'Left', 'ever_team_members' ),
+                        'title' => __( 'Left', 'team-members-for-elementor' ),
                         'icon'  => 'fa fa-align-left',
                     ],
                     'center'  => [
-                        'title' => __( 'Center', 'ever_team_members' ),
+                        'title' => __( 'Center', 'team-members-for-elementor' ),
                         'icon'  => 'fa fa-align-center',
                     ],
                     'right'   => [
-                        'title' => __( 'Right', 'ever_team_members' ),
+                        'title' => __( 'Right', 'team-members-for-elementor' ),
                         'icon'  => 'fa fa-align-right',
                     ],
                     'justify' => [
-                        'title' => __( 'Justify', 'ever_team_members' ),
+                        'title' => __( 'Justify', 'team-members-for-elementor' ),
                         'icon'  => 'fa fa-align-justify',
                     ],
                 ],
@@ -141,7 +141,7 @@ class Team_Members extends Widget_Base {
         $this->start_controls_section(
             'section_member_socials',
             [
-                'label' => __( 'Social Profiles', 'ever_team_members' ),
+                'label' => __( 'Social Profiles', 'team-members-for-elementor' ),
                 'tab'   => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -149,7 +149,7 @@ class Team_Members extends Widget_Base {
         $this->add_control(
             'enable_member_socials',
             [
-                'label'   => esc_html__( 'Display Social Profiles?', 'ever_team_members' ),
+                'label'   => esc_html__( 'Display Social Profiles?', 'team-members-for-elementor' ),
                 'type'    => Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -185,7 +185,7 @@ class Team_Members extends Widget_Base {
                 'fields'      => [
                     [
                         'name'             => 'social_new',
-                        'label'            => esc_html__( 'Icon', 'ever_team_members' ),
+                        'label'            => esc_html__( 'Icon', 'team-members-for-elementor' ),
                         'type'             => Controls_Manager::ICONS,
                         'fa4compatibility' => 'social',
                         'default'          => [
@@ -195,14 +195,14 @@ class Team_Members extends Widget_Base {
                     ],
                     [
                         'name'        => 'link',
-                        'label'       => esc_html__( 'Link', 'ever_team_members' ),
+                        'label'       => esc_html__( 'Link', 'team-members-for-elementor' ),
                         'type'        => Controls_Manager::URL,
                         'label_block' => true,
                         'default'     => [
                             'url'         => '',
                             'is_external' => 'true',
                         ],
-                        'placeholder' => esc_html__( 'Enter the URL', 'ever_team_members' ),
+                        'placeholder' => esc_html__( 'Enter the URL', 'team-members-for-elementor' ),
                     ],
                 ],
                 'title_field' => '{{{ social_new.value.replace(/(far )?(fab )?(fa )?(fa\-)/gi, \'\').replace( /\b\w/g, function( letter ){ return letter.toUpperCase() } ) }}} <i class="{{ social_new.value }}" style="float: right;"></i>',
@@ -219,7 +219,7 @@ class Team_Members extends Widget_Base {
         $this->start_controls_section(
             'image_styles',
             [
-                'label' => esc_html__( 'Image Styles', 'ever_team_members' ),
+                'label' => esc_html__( 'Image Styles', 'team-members-for-elementor' ),
                 'tab'   => Controls_Manager::TAB_STYLE
             ]
         );
@@ -227,7 +227,7 @@ class Team_Members extends Widget_Base {
         $this->add_control(
             'image_rounded',
             [
-                'label'        => esc_html__( 'Rounded Avatar?', 'ever_team_members' ),
+                'label'        => esc_html__( 'Rounded Avatar?', 'team-members-for-elementor' ),
                 'type'         => Controls_Manager::SWITCHER,
                 'return_value' => 'image-rounded',
                 'default'      => '',
@@ -237,7 +237,7 @@ class Team_Members extends Widget_Base {
         $this->add_responsive_control(
             'image_width',
             [
-                'label'      => esc_html__( 'Image Width', 'ever_team_members' ),
+                'label'      => esc_html__( 'Image Width', 'team-members-for-elementor' ),
                 'type'       => Controls_Manager::SLIDER,
                 'range'      => [
                     'px' => [
@@ -259,7 +259,7 @@ class Team_Members extends Widget_Base {
         $this->add_responsive_control(
             'image_height',
             [
-                'label'      => __( 'Height', 'ever_team_members' ),
+                'label'      => __( 'Height', 'team-members-for-elementor' ),
                 'type'       => Controls_Manager::SLIDER,
                 'range'      => [
                     'px' => [
@@ -277,7 +277,7 @@ class Team_Members extends Widget_Base {
         $this->add_responsive_control(
             'image_margin',
             [
-                'label'      => esc_html__( 'Margin', 'ever_team_members' ),
+                'label'      => esc_html__( 'Margin', 'team-members-for-elementor' ),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', '%' ],
                 'selectors'  => [
@@ -289,7 +289,7 @@ class Team_Members extends Widget_Base {
         $this->add_responsive_control(
             'image_padding',
             [
-                'label'      => esc_html__( 'Padding', 'ever_team_members' ),
+                'label'      => esc_html__( 'Padding', 'team-members-for-elementor' ),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', '%', 'em' ],
                 'selectors'  => [
@@ -300,7 +300,7 @@ class Team_Members extends Widget_Base {
 
         $this->add_control( 'border_heading', [
             'type'      => Controls_Manager::HEADING,
-            'label'     => __( 'Border', 'ever_team_members' ),
+            'label'     => __( 'Border', 'team-members-for-elementor' ),
             'separator' => 'before',
         ] );
 
@@ -308,7 +308,7 @@ class Team_Members extends Widget_Base {
             Group_Control_Border::get_type(),
             [
                 'name'     => 'image_border',
-                'label'    => esc_html__( 'Border', 'ever_team_members' ),
+                'label'    => esc_html__( 'Border', 'team-members-for-elementor' ),
                 'selector' => '{{WRAPPER}} .ee-team-members-photo',
             ]
         );
@@ -316,7 +316,7 @@ class Team_Members extends Widget_Base {
         $this->add_control(
             'image_border_radius',
             [
-                'label'     => esc_html__( 'Border Radius', 'ever_team_members' ),
+                'label'     => esc_html__( 'Border Radius', 'team-members-for-elementor' ),
                 'type'      => Controls_Manager::DIMENSIONS,
                 'selectors' => [
                     '{{WRAPPER}} .ee-team-members-photo' => 'border-radius: {{TOP}}px {{RIGHT}}px {{BOTTOM}}px {{LEFT}}px;',
@@ -333,7 +333,7 @@ class Team_Members extends Widget_Base {
         $this->start_controls_section(
             'info_styles',
             [
-                'label' => esc_html__( 'Information Styles', 'ever_team_members' ),
+                'label' => esc_html__( 'Information Styles', 'team-members-for-elementor' ),
                 'tab'   => Controls_Manager::TAB_STYLE
             ]
         );
@@ -341,7 +341,7 @@ class Team_Members extends Widget_Base {
         $this->add_control(
             'name_heading',
             [
-                'label'     => __( 'Member Name', 'ever_team_members' ),
+                'label'     => __( 'Member Name', 'team-members-for-elementor' ),
                 'type'      => Controls_Manager::HEADING,
                 'separator' => 'before',
             ]
@@ -350,7 +350,7 @@ class Team_Members extends Widget_Base {
         $this->add_control(
             'name_color',
             [
-                'label'     => esc_html__( 'Name Color', 'ever_team_members' ),
+                'label'     => esc_html__( 'Name Color', 'team-members-for-elementor' ),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#272727',
                 'selectors' => [
@@ -370,7 +370,7 @@ class Team_Members extends Widget_Base {
         $this->add_control(
             'position_heading',
             [
-                'label'     => __( 'Member Title', 'ever_team_members' ),
+                'label'     => __( 'Member Title', 'team-members-for-elementor' ),
                 'type'      => Controls_Manager::HEADING,
                 'separator' => 'before',
             ]
@@ -379,7 +379,7 @@ class Team_Members extends Widget_Base {
         $this->add_control(
             'position_color',
             [
-                'label'     => esc_html__( 'Title Color', 'ever_team_members' ),
+                'label'     => esc_html__( 'Title Color', 'team-members-for-elementor' ),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#272727',
                 'selectors' => [
@@ -399,7 +399,7 @@ class Team_Members extends Widget_Base {
         $this->add_control(
             'bio_heading',
             [
-                'label'     => __( 'Member Bio', 'ever_team_members' ),
+                'label'     => __( 'Member Bio', 'team-members-for-elementor' ),
                 'type'      => Controls_Manager::HEADING,
                 'separator' => 'before',
             ]
@@ -408,7 +408,7 @@ class Team_Members extends Widget_Base {
         $this->add_control(
             'bio_color',
             [
-                'label'     => esc_html__( 'Bio Color', 'ever_team_members' ),
+                'label'     => esc_html__( 'Bio Color', 'team-members-for-elementor' ),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#272727',
                 'selectors' => [
@@ -431,7 +431,7 @@ class Team_Members extends Widget_Base {
         $this->start_controls_section(
             'profile_styles',
             [
-                'label' => esc_html__( 'Social Profiles Styles', 'ever_team_members' ),
+                'label' => esc_html__( 'Social Profiles Styles', 'team-members-for-elementor' ),
                 'tab'   => Controls_Manager::TAB_STYLE
             ]
         );
@@ -439,7 +439,7 @@ class Team_Members extends Widget_Base {
         $this->add_control(
             'social_icon_size',
             [
-                'label'      => esc_html__( 'Icon Size', 'ever_team_members' ),
+                'label'      => esc_html__( 'Icon Size', 'team-members-for-elementor' ),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => [ 'px', '%', 'em' ],
                 'default'    => [
@@ -460,7 +460,7 @@ class Team_Members extends Widget_Base {
         $this->add_responsive_control(
             'profiles_margin',
             [
-                'label'      => esc_html__( 'Social Profiles Margin', 'ever_team_members' ),
+                'label'      => esc_html__( 'Social Profiles Margin', 'team-members-for-elementor' ),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', '%', 'em' ],
                 'range'      => [
@@ -477,7 +477,7 @@ class Team_Members extends Widget_Base {
         $this->add_responsive_control(
             'icons_padding',
             [
-                'label'      => esc_html__( 'Icon Padding', 'ever_team_members' ),
+                'label'      => esc_html__( 'Icon Padding', 'team-members-for-elementor' ),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', '%', 'em' ],
                 'default'    => [
@@ -498,12 +498,12 @@ class Team_Members extends Widget_Base {
 
         $this->start_controls_tabs( 'social_icons_style_tabs' );
 
-        $this->start_controls_tab( 'normal', [ 'label' => esc_html__( 'Normal', 'ever_team_members' ) ] );
+        $this->start_controls_tab( 'normal', [ 'label' => esc_html__( 'Normal', 'team-members-for-elementor' ) ] );
 
         $this->add_control(
             'social_icon_color',
             [
-                'label'     => esc_html__( 'Icon Color', 'ever_team_members' ),
+                'label'     => esc_html__( 'Icon Color', 'team-members-for-elementor' ),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#000000',
                 'selectors' => [
@@ -515,7 +515,7 @@ class Team_Members extends Widget_Base {
         $this->add_control(
             'social_icon_background',
             [
-                'label'     => esc_html__( 'Background Color', 'ever_team_members' ),
+                'label'     => esc_html__( 'Background Color', 'team-members-for-elementor' ),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '',
                 'selectors' => [
@@ -535,7 +535,7 @@ class Team_Members extends Widget_Base {
         $this->add_control(
             'social_icon_border_radius',
             [
-                'label'     => esc_html__( 'Border Radius', 'ever_team_members' ),
+                'label'     => esc_html__( 'Border Radius', 'team-members-for-elementor' ),
                 'type'      => Controls_Manager::SLIDER,
                 'range'     => [
                     'px' => [
@@ -550,12 +550,12 @@ class Team_Members extends Widget_Base {
 
         $this->end_controls_tab();
 
-        $this->start_controls_tab( 'social_icon_hover', [ 'label' => esc_html__( 'Hover', 'ever_team_members' ) ] );
+        $this->start_controls_tab( 'social_icon_hover', [ 'label' => esc_html__( 'Hover', 'team-members-for-elementor' ) ] );
 
         $this->add_control(
             'social_icon_hover_color',
             [
-                'label'     => esc_html__( 'Icon Hover Color', 'ever_team_members' ),
+                'label'     => esc_html__( 'Icon Hover Color', 'team-members-for-elementor' ),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#ddd',
                 'selectors' => [
@@ -567,7 +567,7 @@ class Team_Members extends Widget_Base {
         $this->add_control(
             'social_icon_hover_background',
             [
-                'label'     => esc_html__( 'Hover Background Color', 'ever_team_members' ),
+                'label'     => esc_html__( 'Hover Background Color', 'team-members-for-elementor' ),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .ee-team-members-social  i:hover' => 'background-color: {{VALUE}};',
@@ -578,7 +578,7 @@ class Team_Members extends Widget_Base {
         $this->add_control(
             'social_icon_hover_border_color',
             [
-                'label'     => esc_html__( 'Hover Border Color', 'ever_team_members' ),
+                'label'     => esc_html__( 'Hover Border Color', 'team-members-for-elementor' ),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .ee-team-members-social  i:hover' => 'border-color: {{VALUE}};',
@@ -616,15 +616,15 @@ class Team_Members extends Widget_Base {
 
         ?>
 
-        <div class="ever-elements ee-team-members <?php echo $classes; ?>">
+        <div class="ever-elements ee-team-members <?php echo esc_attr( $classes ); ?>">
             <div class="ee-team-members-container">
-                <?php printf( '<img %1$s>', $this->get_render_attribute_string( 'member_photo' ) ); ?>
+                <?php printf( '<img %1$s>', esc_url( $this->get_render_attribute_string( 'member_photo' ) ) ); ?>
             </div>
 
             <div class="ee-team-members-bottom-container">
                 <?php
-                printf( '<h2 %1$s>%2$s</h2>', $this->get_render_attribute_string( 'member_name' ), $settings['member_name'] );
-                printf( '<h3 %1$s>%2$s</h3>', $this->get_render_attribute_string( 'member_title' ), $settings['member_title'] );
+                printf( '<h2 %1$s>%2$s</h2>', esc_attr( $this->get_render_attribute_string( 'member_name' ) ), esc_attr( $settings['member_name'] ) );
+                printf( '<h3 %1$s>%2$s</h3>', esc_attr( $this->get_render_attribute_string( 'member_title' ) ), esc_attr( $settings['member_title'] ) );
                 ?>
 
                 <?php if ( ! empty( $settings['member_socials'] ) ) { ?>
@@ -642,7 +642,7 @@ class Team_Members extends Widget_Base {
                 <?php } ?>
 
                 <?php
-                printf( '<p %1$s>%2$s</p>', $this->get_render_attribute_string( 'member_bio' ), $settings['member_bio'] );
+                printf( '<p %1$s>%2$s</p>', wp_kses_post( $this->get_render_attribute_string( 'member_bio' ) ), wp_kses_post( $settings['member_bio'] ) );
                 ?>
 
             </div>
