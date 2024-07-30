@@ -2,7 +2,18 @@
 .DS_Store
 build
 *.log
+*.sh
 node_module
 .idea
 node_modules
 .sass-cache
+README.md
+Thumbs.db
+.github
+.git
+.gitattributes
+.gitignore
+composer.lock
+phpcs.xml.dist
+.jshintrc
+*.scss .

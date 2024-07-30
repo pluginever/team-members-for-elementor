@@ -26,7 +26,7 @@ class Scripts{
 	 */
 	public static function load_assets(){
 		$suffix = ( defined( 'WP_DEBUG' ) && WP_DEBUG ) ? '' : '.min';
-		wp_register_style('team-members-for-elementor', TME_ASSETS."/css/team-members-for-elementor{$suffix}.css", [], date('i'));
+		wp_register_style('team-members-for-elementor', TME_ASSETS."/css/team-members-for-elementor{$suffix}.css", [], gmdate('i'));
 		wp_enqueue_style('team-members-for-elementor');
 	}
 
